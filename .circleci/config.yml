@@ -25,9 +25,13 @@ workflows:
     jobs:
       - test-run
 
-  sheduler:
+  scheduler:
     triggers:
       - schedule:
           cron: "* * * * *"
+          filters:
+            branches:
+              only:
+                - circleci-project-setup
     jobs:
       - test-run
