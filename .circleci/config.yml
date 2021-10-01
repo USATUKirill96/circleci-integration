@@ -7,7 +7,7 @@ version: 2.1
 jobs:
   test-run:
     docker:
-      - image: cimg/base:2021.07
+      - image: docker:17.05.0-ce-git
     steps:
       - checkout
       - run:
