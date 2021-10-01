@@ -11,8 +11,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Running test"
-          command: "docker-compose up --build"
+          name: "building image"
+          command: "docker build -t test-run ."
+      - run:
+          name: "running tests"
+          command: "docker run --rm test-run"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
