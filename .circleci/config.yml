@@ -22,7 +22,7 @@ jobs:
 workflows:
   test-run-workflow:
     triggers:
-      - shedule:
+      - schedule:
           cron: "*/5 * * * *"
           filters:
             branches:
