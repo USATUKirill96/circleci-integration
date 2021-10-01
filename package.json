@@ -1,0 +1,21 @@
+{
+  "name": "circleci-integration",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/USATUKirill96/circleci-integration.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/USATUKirill96/circleci-integration/issues"
+  },
+  "homepage": "https://github.com/USATUKirill96/circleci-integration#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.15.0"
+  }
+}

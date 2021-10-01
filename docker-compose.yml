@@ -1,0 +1,7 @@
+version: "3.3"
+services:
+  autotest:
+    container_name: autotest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
