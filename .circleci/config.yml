@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
           name: "setting env"
-          command: "npm install && npx playwright install"
+          command: "npm install && npx playwright install && npx playwright install-deps"
       - run:
           name: "running tests"
           command: "npx playwright test"
