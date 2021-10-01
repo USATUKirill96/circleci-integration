@@ -6,16 +6,23 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   test-run:
+    working_directory: ~/pos-playwright
     docker:
       - image: cimg/node:16.10.0
     steps:
       - checkout
+      - restore_cache:
+          key: node--{{ checksum "package-lock.json" }}
       - run:
           name: "setting env"
           command: "npm install && npx playwright install && npx playwright install-deps"
       - run:
           name: "running tests"
           command: "npx playwright test"
+      - save_cache:
+          key: node--{{ checksum "package-lock.json" }}
+          paths:
+            ~/pos-playwright/node_modules
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -28,7 +35,7 @@ workflows:
   scheduler:
     triggers:
       - schedule:
-          cron: "0 10 * * *"
+          cron: "0 5 * * *" # 10 утра по ЕКТ
           filters:
             branches:
               only:
