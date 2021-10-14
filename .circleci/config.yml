@@ -2,16 +2,19 @@ version: 2.1
 
 commands:
   run_tests:
-    working_directory: ~/tests
     steps:
       - checkout
-      - run: "docker-compose up"
+      - run:
+          name: "Building tests"
+          working_directory: ~/tests
+          command: "docker-compose up"
 
 
 jobs:
   preset_and_run_tests:
     machine:
       image: ubuntu-2004:202107-02
+    working_directory: ~/tests
     steps:
       - run_tests
 
