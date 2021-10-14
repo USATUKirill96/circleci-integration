@@ -2,6 +2,7 @@ version: "3.3"
 services:
   autotest:
     container_name: autotest
+    network_mode: host
     build:
       context: .
       dockerfile: ./Dockerfile
