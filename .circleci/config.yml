@@ -1,38 +1,12 @@
 version: 2.1
-
 jobs:
-  test-run:
-    working_directory: ~/pos-playwright
-    docker:
-      - image: cimg/node:16.10.0-browsers
+  build:
+    machine:
+      image: ubuntu-2004:202010-01
     steps:
       - checkout
-      - restore_cache:
-          key: node--{{ checksum "package-lock.json" }}
       - run:
-          name: "Installing deps"
-          command: "npm install && npx playwright install && npx playwright install-deps"
-      - run:
-          name: "Running tests"
-          command: "npm run test"
-      - save_cache:
-          key: node--{{ checksum "package-lock.json" }}
-          paths:
-            ~/pos-playwright/node_modules
+          name: "Testing"
+          command: echo "Hi"
 
-workflows:
-
-  commit:
-    jobs:
-      - test-run
-
-  scheduler:
-    triggers:
-      - schedule:
-          cron: "0 5 * * *" # 10 утра по ЕКТ
-          filters:
-            branches:
-              only:
-                - circleci-project-setup
-    jobs:
-      - test-run
+Available machine images

@@ -1,5 +1,4 @@
-FROM node:16
-FROM mcr.microsoft.com/playwright:v1.6.2-focal
+FROM mcr.microsoft.com/playwright:v1.15.0-focal
 
 WORKDIR /code/
 
