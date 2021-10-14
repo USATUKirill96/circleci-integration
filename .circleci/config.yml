@@ -14,3 +14,9 @@ jobs:
       image: ubuntu-2004:202107-02
     steps:
       - run_tests
+
+
+workflows:
+  commit:
+    jobs:
+      preset_and_run_tests
