@@ -5,13 +5,12 @@ commands:
     working_directory: ~/tests
     steps:
       - checkout
-      - run "docker-compose up"
+      - run: "docker-compose up"
 
 
 jobs:
   preset_and_run_tests:
     machine:
       image: ubuntu-2004:202107-02
-      resource_class: small
     steps:
       - run_tests
