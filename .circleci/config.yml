@@ -5,13 +5,22 @@ commands:
     steps:
       - checkout
 
+      - add_ssh_keys:
+        fingerprints:
+          - 70:99:d5:0c:5f:33:a2:1a:93:60:28:b1:67:9a:56:5a
+
+      - run:
+        name: "Pull backend repository"
+        working_directory: ~/backend
+        command: "git clone git@github.com:USATUKirill96/circleci-backend.git"
+
       - restore_cache:
-          key: node--{{ checksum "package-lock.json" }}
+          key: node--{{ checksum "~/tests/package-lock.json" }}
       - run:
           name: "Building tests"
           command: "npm install && npx playwright install && npx playwright install-deps"
       - save_cache:
-          key: node--{{ checksum "package-lock.json" }}
+          key: node--{{ checksum "~/tests/package-lock.json" }}
           paths:
             - ~/tests/node_modules/
       - run:
