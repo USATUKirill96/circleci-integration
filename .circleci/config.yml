@@ -18,7 +18,8 @@ commands:
           name: "Running services"
           command: "docker-compose up"
           environment:
-            BACKEND_DIR: ~/backend/circleci-backend/
+            BACKEND_DIR: ~/backend/circleci-backend
+            TESTS_DIR: ~/tests
       # - restore_cache:
       #     key: node--{{ checksum "~/tests/package-lock.json" }}
       # - run:
