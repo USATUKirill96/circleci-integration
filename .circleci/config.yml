@@ -20,7 +20,7 @@ commands:
 
       - run:
           name: "Running django server"
-          command: "daemonize python3.7 manage.py runserver 8051"
+          command: "daemonize /usr/bin/python3.7 manage.py runserver 8051"
           working_directory: ~/backend/circleci-backend
 
       - run:
