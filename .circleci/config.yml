@@ -15,30 +15,23 @@ commands:
           command: "git clone git@github.com:USATUKirill96/circleci-backend.git"
       
       - run:
-          name: "Installing packages"
-          command: "sudo apt-add-repository ppa:deadsnakes/ppa && sudo apt update && sudo apt install software-properties-common daemonize  python3.7 -y && python3.7 -m pip install -r ~/backend/circleci-backend/requirements.txt"
-
-      - run:
-          name: "Running django server"
-          command: "daemonize /usr/bin/python3.7 manage.py runserver 8051"
-          working_directory: ~/backend/circleci-backend
-
-      - run:
-          name: "Modifying /etc/hosts"
-          command: 'sudo sed -i "127.0.0.1    testapp.local" /etc/hosts'
-
-      - restore_cache:
-          key: node--{{ checksum "~/tests/package-lock.json" }}
-      - run:
-          name: "Building tests"
-          command: "npm install && npx playwright install && npx playwright install-deps"
-      - save_cache:
-          key: node--{{ checksum "~/tests/package-lock.json" }}
-          paths:
-            - ~/tests/node_modules/
-      - run:
-          name: "Running tests"
-          command: "npx playwright test"
+          name: "Running services"
+          working_directory: ~tests
+          command: "docker-compose up"
+          environment:
+            BACKEND_DIR: ~/backend/circleci-backend/
+      # - restore_cache:
+      #     key: node--{{ checksum "~/tests/package-lock.json" }}
+      # - run:
+      #     name: "Building tests"
+      #     command: "npm install && npx playwright install && npx playwright install-deps"
+      # - save_cache:
+      #     key: node--{{ checksum "~/tests/package-lock.json" }}
+      #     paths:
+      #       - ~/tests/node_modules/
+      # - run:
+      #     name: "Running tests"
+      #     command: "npx playwright test"
 
 jobs:
   preset_and_run_tests:

@@ -1,8 +1,17 @@
 version: "3.3"
 services:
+
+  backend:
+    container_name: backend
+    build:
+      context: $BACKEND_DIR
+      dockerfile: ./Dockerfile/Backend
+
   autotest:
     container_name: autotest
-    network_mode: host
+    depends_on: backend
+    extra_hosts:
+      testapp.local: 127.0.0.1
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile/Autotest
