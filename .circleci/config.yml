@@ -16,8 +16,7 @@ commands:
       
       - run:
           name: "Installing packages"
-          command: "sudo apt update && sudo apt-add-repository ppa:deadsnakes/ppa && sudo apt install software-properties-common  python3.7 -y && python3.7 -m pip install -r requirements.txt"
-          working_directory: ~/backend/circleci_backend
+          command: "sudo apt-add-repository ppa:deadsnakes/ppa && sudo apt update && sudo apt install software-properties-common  python3.7 -y && python3.7 -m pip install -r ~/backend/circleci_backend/requirements.txt"
 
       - run:
           name: "Running django server"
