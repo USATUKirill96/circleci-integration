@@ -9,7 +9,8 @@ services:
 
   autotest:
     container_name: autotest
-    depends_on: backend
+    depends_on: 
+      - backend
     extra_hosts:
       testapp.local: 127.0.0.1
     build:

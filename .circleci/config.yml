@@ -16,7 +16,6 @@ commands:
       
       - run:
           name: "Running services"
-          working_directory: ~tests
           command: "docker-compose up"
           environment:
             BACKEND_DIR: ~/backend/circleci-backend/
