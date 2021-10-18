@@ -4,8 +4,8 @@ services:
   backend:
     container_name: backend
     build:
-      context: ./Dockerfile
-      dockerfile: Backend
+      context: .
+      dockerfile: ./dockerfile/Backend
 
   autotest:
     container_name: autotest
@@ -14,5 +14,5 @@ services:
     extra_hosts:
       testapp.local: 127.0.0.1
     build:
-      context: ./Dockerfile
-      dockerfile: Autotest
+      context: .
+      dockerfile: ./dockerfile/Autotest
