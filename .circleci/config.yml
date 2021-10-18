@@ -6,13 +6,13 @@ commands:
       - checkout
 
       - add_ssh_keys:
-        fingerprints:
-          - 70:99:d5:0c:5f:33:a2:1a:93:60:28:b1:67:9a:56:5a
+          fingerprints:
+            - 70:99:d5:0c:5f:33:a2:1a:93:60:28:b1:67:9a:56:5a
 
       - run:
-        name: "Pull backend repository"
-        working_directory: ~/backend
-        command: "git clone git@github.com:USATUKirill96/circleci-backend.git"
+          name: "Pull backend repository"
+          working_directory: ~/backend
+          command: "git clone git@github.com:USATUKirill96/circleci-backend.git"
 
       - restore_cache:
           key: node--{{ checksum "~/tests/package-lock.json" }}
