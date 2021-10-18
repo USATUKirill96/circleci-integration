@@ -16,7 +16,7 @@ commands:
       
       - run:
           name: "Installing packages"
-          command: "sudo apt update && sudo apt-add-repository ppa: deadsnakes/ppa && sudo apt install software-properties-common  python3.7 -y && python3.7 -m pip install -r requirements.txt"
+          command: "sudo apt update && sudo apt-add-repository ppa:deadsnakes/ppa && sudo apt install software-properties-common  python3.7 -y && python3.7 -m pip install -r requirements.txt"
           working_directory: ~/backend/circleci_backend
 
       - run:
