@@ -6,9 +6,10 @@ commands:
       - checkout
       - run:
           name: "Building tests"
-          working_directory: ~/tests
-          command: "docker-compose up"
-
+          command: "npm install && npx playwright install"
+      - run:
+          name: "Running tests"
+          command: "npx playwright tests"
 
 jobs:
   preset_and_run_tests:
