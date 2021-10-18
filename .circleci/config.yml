@@ -21,7 +21,11 @@ commands:
       - run:
           name: "Running django server"
           command: "python3.7 manage.py runserver 8051"
-          working_directory: ~/backend/circleci_backend
+          working_directory: ~/backend/circleci-backend
+
+      - run:
+          name: "Modifying /etc/hosts"
+          command: 'sudo echo "127.0.0.1    testapp.local" >> /etc/hosts'
 
       - restore_cache:
           key: node--{{ checksum "~/tests/package-lock.json" }}
