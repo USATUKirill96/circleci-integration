@@ -16,11 +16,11 @@ commands:
       
       - run:
           name: "Installing packages"
-          command: "sudo apt-add-repository ppa:deadsnakes/ppa && sudo apt update && sudo apt install software-properties-common  python3.7 -y && python3.7 -m pip install -r ~/backend/circleci-backend/requirements.txt"
+          command: "sudo apt-add-repository ppa:deadsnakes/ppa && sudo apt update && sudo apt install software-properties-common daemonize  python3.7 -y && python3.7 -m pip install -r ~/backend/circleci-backend/requirements.txt"
 
       - run:
           name: "Running django server"
-          command: "python3.7 manage.py runserver 8051"
+          command: "daemonize python3.7 manage.py runserver 8051"
           working_directory: ~/backend/circleci-backend
 
       - run:
