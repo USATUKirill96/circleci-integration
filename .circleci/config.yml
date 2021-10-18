@@ -13,6 +13,15 @@ commands:
           name: "Pull backend repository"
           working_directory: ~/backend
           command: "git clone git@github.com:USATUKirill96/circleci-backend.git"
+      
+      - run:
+          name: "Installing packages"
+          command: "sudo apt install python3.7 -y && python3.7 -m pip install -r requirements.txt"
+          working_directory: ~/backend/circleci_backend
+
+      - run:
+          name: "Running django server"
+          command: "python3.7 manage.py runserver 8051"
 
       - restore_cache:
           key: node--{{ checksum "~/tests/package-lock.json" }}
