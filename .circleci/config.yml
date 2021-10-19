@@ -25,6 +25,10 @@ commands:
           command: "echo $(ls)"
 
       - run:
+          name: "echoing2"
+          command: "echo $(pwd)"
+
+      - run:
           name: "Running tests"
           command: "docker-compose up autotest"
       # - restore_cache:
