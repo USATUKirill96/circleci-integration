@@ -21,6 +21,10 @@ commands:
             BACKEND_DIR: ~/backend/circleci-backend
 
       - run:
+          name: "echoing"
+          command: "echo $(ls)"
+
+      - run:
           name: "Running tests"
           command: "docker-compose up autotest"
       # - restore_cache:
